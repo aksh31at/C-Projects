@@ -34,6 +34,30 @@ class Bill{
 
 };
 
+void PrintBill(Bill b){
+    system("cls");
+    int count=0;
+    bool close=0;
+
+    while(!close){
+        int choice;
+        cout<<"\t1.Add Bill"<<endl;
+        cout<<"\t2.Close Session"<<endl;
+        cout<<"\tEnter Choice: ";
+        cin>>choice;
+
+        system("cls");
+        if(choice==1){
+            string item;
+            int quant;
+            cout<<"\tEnter Item: ";
+            cin>>item;
+            cout<<"\tEnter Quantity: ";
+            cin>>quant;
+
+        }
+    }
+}
 void addItem(Bill b){
     bool close=0;
     while(!close){
@@ -96,7 +120,11 @@ int main(){
         cin>>val;
 
         if(val==1){
+            system("cls");
             addItem(b);
+        }
+
+        else if(val==2){
 
         }
     }
