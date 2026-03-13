@@ -55,7 +55,47 @@ void PrintBill(Bill b){
             cout<<"\tEnter Quantity: ";
             cin>>quant;
 
+            ifstream in("C:/Users/as625/OneDrive/Desktop/C++Projects/Supermarket/Bill.txt");
+            ofstream out("C:/Users/as625/OneDrive/Desktop/C++Projects/Supermarket/Billtemp.txt");
+
+            string line;
+            bool found=0;
+
+            while(getline(in, line)){
+                stringstream ss;
+                ss<<line;
+                string itemName;
+                int itemRate;
+                int itemQuant;
+                char delimiter;
+
+                ss>>itemName>>delimiter>>itemRate>>delimiter>>itemQuant;
+
+                if(item==itemName){
+                    found=true;
+                    if(quant==itemQuant){
+                        int amount=itemRate*quant;
+                        cout<<"t Item | Rate | Quantity | Amount"<<endl;
+                        cout<<"\t"<<itemName<<"\t"<<itemRate<<"\t"<<itemQuant<<"\t"<<amount<<endl;
+                        int newQuant=itemQuant-quant;
+                        itemQuant=newQuant;
+                        count+=amount;
+
+                        out<<"\t"<<itemName<<" : "<<itemQuant<<endl<<endl;
+                    }
+                    else cout<<"\tSorry, "<<item<< " is not available"<<endl;
+                } 
+                else out<<line;    
+            }
+            if(!found) cout<<"\tItem Not Available!"<<endl;
+            out.close();
+            in.close();
+            remove("C:/Users/as625/OneDrive/Desktop/C++Projects/Supermarket/Bill.txt");
+            rename("C:/Users/as625/OneDrive/Desktop/C++Projects/Supermarket/Billtemp.txt", "C:/Users/as625/OneDrive/Desktop/C++Projects/Supermarket/Bill.txt");
+
         }
+        
+       
     }
 }
 void addItem(Bill b){
