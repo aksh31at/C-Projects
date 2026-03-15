@@ -1,0 +1,6 @@
+F101 : USA : India : 50
+
+F102 : USA : Canada : 50
+
+F103 : USA : China : 50
+
